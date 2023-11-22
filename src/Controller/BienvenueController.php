@@ -6,13 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PrincipalController extends AbstractController
+class BienvenueController extends AbstractController
 {
-    #[Route('/principal', name: 'app_principal')]
+    #[Route('/welcome/{nom}', name: 'welcome')]
     public function index(): Response
     {
-        return $this->render('principal/index.html.twig', [
-            'controller_name' => " Symfony c'est super ",
-        ]);
+        return $this->render('principal/index.html.twig', array("nom" => $nom));
     }
 }
