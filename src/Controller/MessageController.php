@@ -11,7 +11,16 @@ class MessageController extends AbstractController
     #[Route('/message/{numerodepartement}/{sexe}', name: 'message')]
     public function message(int $numerodepartement, string $sexe): Response
     {
+        $reponse="";
+        if ($sexe == "M"){
+            $reponse = 'garçon';
+        } elseif($sexe == "F") {
+            $reponse = 'fille';
+        } else {
+            $reponse = 'sexe inconnue';
+        }
+        $date = date('d-m-y h:i:s');
         return $this->render('message/message.html.twig', 
-                array("numerodepartement" => $numerodepartement, "sexe" => $sexe));
+                array("numerodepartement" => $numerodepartement, "sexe" => $reponse, "date" => $date));
     }
 }
