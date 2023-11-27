@@ -20,6 +20,9 @@ class Employe
     #[ORM\Column(type: Types::DECIMAL, precision: 9, scale: 2)]
     private ?string $salaire = null;
 
+    #[ORM\ManyToOne(inversedBy: 'employes')]
+    private ?lieu $lieu = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Employe
     public function setSalaire(string $salaire): static
     {
         $this->salaire = $salaire;
+
+        return $this;
+    }
+
+    public function getLieu(): ?lieu
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?lieu $lieu): static
+    {
+        $this->lieu = $lieu;
 
         return $this;
     }

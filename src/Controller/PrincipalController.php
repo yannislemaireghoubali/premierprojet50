@@ -5,14 +5,22 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Employe;
 
 class PrincipalController extends AbstractController
 {
-    #[Route('/principal', name: 'app_principal')]
-    public function index(): Response
-    {
+    #[Route('/employes', name: 'employes')]
+    public function afficheEmployes(ManagerRegistry $doctrine): Response {
         $employes=$doctrine->getRepository(Employe::class)->findAll();
         $titre = "Liste des employés";
         return $this->render('principal/employes.html.twig', compact('titre','employes'));
+    }
+    
+    #[Route('/employe/{id}', name: 'employe')]
+    public function afficheUnEmployes(ManagerRegistry $doctrine, int $id): Response {
+        $employe=$doctrine->getRepository(Employe::class)->find($id);
+        $titre = "Employé n° " . $id;
+        return $this->render('principal/unemploye.html.twig', compact('titre','employe'));
     }
 }
