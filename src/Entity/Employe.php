@@ -21,6 +21,7 @@ class Employe
     private ?string $salaire = null;
 
     #[ORM\ManyToOne(inversedBy: 'employes')]
+    #[ORM\JoinColumn(name:'idLieu',referencedColumnName:"id",nullable:false)]
     private ?lieu $lieu = null;
 
     public function getId(): ?int
