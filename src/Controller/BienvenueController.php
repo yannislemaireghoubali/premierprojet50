@@ -9,8 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class BienvenueController extends AbstractController
 {
     #[Route('/welcome/{nom}', name: 'welcome')]
-    public function index(): Response
+    public function welcome(string $nom): Response
     {
-        return $this->render('principal/index.html.twig', array("nom" => $nom));
+        return $this->render('principal/welcome.html.twig', array("nom" => $nom));
     }
 }
