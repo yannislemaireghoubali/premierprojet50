@@ -23,4 +23,11 @@ class PrincipalController extends AbstractController
         $titre = "Employé n° " . $id;
         return $this->render('principal/unemploye.html.twig', compact('titre','employe'));
     }
+    
+    #[Route('/employe/{id}', name: 'employetout', requirements:["id"=>"\d+"])]
+    public function afficheUnEmployesTout(ManagerRegistry $doctrine, int $id): Response {
+        $employe=$doctrine->getRepository(Employe::class)->find($id);
+        $titre = "Employe";
+        return $this->render('principal/unemployetout.html.twig', compact('titre','employe'));
+    }
 }
