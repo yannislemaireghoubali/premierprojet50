@@ -8,9 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MessageController extends AbstractController
 {
-    #[Route('/message/{numerodepartement}/{sexe}', name: 'app_message')]
+    #[Route('/message/{numerodepartement}/{sexe}', name: 'message')]
     public function message(int $numerodepartement, string $sexe): Response
     {
-        return $this->render('message/message.html.twig', array("numerodepartement" => $numerodepartement, "sexe" => $sexe));
+        return $this->render('message/message.html.twig', 
+                array("numerodepartement" => $numerodepartement, "sexe" => $sexe));
     }
 }
