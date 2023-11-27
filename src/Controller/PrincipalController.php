@@ -32,9 +32,9 @@ class PrincipalController extends AbstractController
     }
     
     #[Route('/lieu/', name: 'lieu')]
-    public function Lieu(ManagerRegistry $doctrine, int $idLieu): Response {
+    public function Lieu(ManagerRegistry $doctrine, int $id): Response {
         $employe=$doctrine->getRepository(Employe::class)->findAll();
-        $titre = "Select * from employe where idLieu=" . $idLieu;
+        $titre = "Select * from employe where idLieu=" . $id;
         return $this->render('principal/lieu.html.twig', compact('titre','employe'));
     }
 }
