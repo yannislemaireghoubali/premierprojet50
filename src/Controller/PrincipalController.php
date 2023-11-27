@@ -11,8 +11,8 @@ class PrincipalController extends AbstractController
     #[Route('/principal', name: 'app_principal')]
     public function index(): Response
     {
-        return $this->render('principal/index.html.twig', [
-            'controller_name' => " Symfony c'est super ",
-        ]);
+        $employes=$doctrine->getRepository(Employe::class)->findAll();
+        $titre = "Liste des employés";
+        return $this->render('principal/employes.html.twig', compact('titre','employes'));
     }
 }
