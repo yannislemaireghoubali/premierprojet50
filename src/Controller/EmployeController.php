@@ -11,7 +11,8 @@ use App\Entity\Employe;
 class EmployeController extends AbstractController
 {
     #[Route('/employe/voirmieux/{id}', name: 'app_employe', requirements:["id"=>"\d+"], defaults: ['id'=>'99'])]
-    public function Voir(ManagerRegistry $doctrine, int $id): Response
+    #[Route('/employe/voirnom/{nom}', name: 'app_employe', requirements:["id"=>"^\w[1,}"], defaults: ['nom'=>'benoit'])]
+    public function VoirEmploye(ManagerRegistry $doctrine, int $id): Response
     {
         $employe=$doctrine->getRepository(Employe::class)->find($id);
         $titre = "Employé";
