@@ -30,11 +30,11 @@ class PrincipalController extends AbstractController
         $titre = "Employe";
         return $this->render('principal/unemployetout.html.twig', compact('titre','employe'));
     }
-    
+    /**
     #[Route('/lieu/', name: 'lieu')]
     public function Lieu(ManagerRegistry $doctrine, int $id): Response {
         $employe=$doctrine->getRepository(Employe::class)->findAll();
-        $titre = "Liste des employés;
+        $titre = "Liste des employés";
         return $this->render('principal/lieu.html.twig', compact('titre','employe'));
-    }
+    }*/
 }
