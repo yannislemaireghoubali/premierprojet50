@@ -9,13 +9,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contact;
+use App\Service\GestionContact;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact/demande', name: 'contact')]
-    public function demandeContact(Request $request, EntityManagerInterface $manager): Response {
+    public function demandeContact(Request $request, GestionContact $gestionContact, EntityManagerInterface $manager): Response {
         $contact = new Contact();
         $form = $this->createFormBuilder($contact)
                 ->add('titre', ChoiceType::class, array(
@@ -45,6 +47,11 @@ class ContactController extends AbstractController
                     ))
                 ->add('Envoyer', SubmitType::class)
                 ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            $gestionContact->creerContact($contact);
+            return $this->redirectToRoute("app_homepage");
+        }
         return $this->render('contact/index.html.twig', [
             'formContact' => $form->createView(),
             'titre' => 'Formulaire de contact',
