@@ -15,24 +15,24 @@ class GestionContact{
         $this->mailer = $mailer;
     }
 
-    public function creerContact(Contact $contact){
-        $contact->setDatePremierContact(new \DateTime());
-        $this->em->persist($contact);
-        $this->em->flush();
-    }
-    
-    public function envoiMailContact(Contact $contact){
-        $email = (new TemplatedEmail())
-                ->from(new Address('benoit.roche@ac-nice.fr','Contact Symfony'))
-                ->to($contact->getMail())
-                ->subject('Demande de renseignement')
-                ->text('Bonjour')
-                ->attachFromPath('assets/pdf/presentation.pdf','Presentation')
-                ->htmlTemplate('mails/mail.html.twig')
-                ->context([
-                    'contact' =>$contact,
-                ]);
-                
-        $this->mailer->send($email);
-    }
+//    public function creerContact(Contact $contact):void{
+//        $contact->setDatePremierContact(new \DateTime());
+//        $this->em->persist($contact);
+//        $this->em->flush();
+//    }
+//    
+//    public function envoiMailContact(Contact $contact): void{
+//        $email = (new TemplatedEmail())
+//                ->from(new Address('benoit.roche@ac-nice.fr','Contact Symfony'))
+//                ->to($contact->getMail())
+//                ->subject('Demande de renseignement')
+//                ->text('Bonjour')
+//                ->attachFromPath('assets/pdf/presentation.pdf','Presentation')
+//                ->htmlTemplate('mails/mail.html.twig')
+//                ->context([
+//                    'contact' =>$contact,
+//                ]);
+//                
+//        $this->mailer->send($email);
+//    }
 }

@@ -1,14 +1,18 @@
-{% extends 'base.html.twig' %}
+<h3>Demande de contact</h3>
 
-{% block title %}Hello CoursController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Homepage</h1>
-</div>
-{% endblock %}
+<p>
+    Bonjour {% if (contact.getTitre()=="M") %}
+    Monsieur
+    {% else %}
+        Madame
+        {% endif %}
+            {{ contact.getNom()|title }}
+        </p>
+        Nous avons bien rçu votre demande de contact, toutes les équipes sont moblisés pour satisfaire votre besion.
+        <br>
+        En attendant que nous vous rappelions, vous pouvez visiter notre site <a href="https://moodle.benoitroche.fr"> en cliquant ici</a>
+        <p>
+            Merci pour votre confiance
+        </p>
+        La direction
+        <p><img src=""{{ email.image('@images/symfony.png') }}" width="150" title="café" alt="monimagecafe"></p>
