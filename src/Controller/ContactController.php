@@ -50,6 +50,7 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $gestionContact->creerContact($contact);
+            $gestionContact->envoiMailContact($contact);
             return $this->redirectToRoute("app_homepage");
         }
         return $this->render('contact/index.html.twig', [
