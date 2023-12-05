@@ -1,0 +1,17 @@
+<h3>Demande de contact</h3>
+
+<p>
+    Bonjour {% if (contact.getTitre()=="M") %}
+    Monsieur
+    {% else %}
+        Madame
+    {% endif %}
+        {{ contact.getNom()|title }}
+</p>
+    Nous avons bien rçu votre demande de contact, toutes les équipes sont moblisés pour satisfaire votre besion.
+<br>
+    En attendant que nous vous rappelions, vous pouvez visiter notre site <a href="https://moodle.benoitroche.fr"> en cliquant ici</a>
+<p>
+    Merci pour votre confiance
+</p>
+    La direction
